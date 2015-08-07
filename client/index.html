@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<script src="../bower_components/lodash/lodash.min.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src='../bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>	<script src='./js/main.js'></script>
+<script src='./js/Controllers/MapController.js'></script>
+
+<body ng-app='main'>
+	<div ng-controller='MapController as MapCtrl'>
+		<form ng-submit='MapCtrl.lookup()'>
+			<input ng-model='MapCtrl.address' type='text'></input>
+			<div>
+				{{MapCtrl.address}}
+			</div>
+		</form>
+	</div>
+	<div ng-controller="map">
+    <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom"></ui-gmap-google-map>
+  </div>
+</body>
+
+</html>
+
