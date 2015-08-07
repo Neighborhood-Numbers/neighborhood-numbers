@@ -2,7 +2,7 @@ var React = require('react');
 
 var App = React.createClass({
 	render: function () {
-		<form>
+		return <form>
 			<input type = 'text'>
 		</form>	
 	}
