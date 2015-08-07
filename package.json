@@ -4,11 +4,8 @@
   "description": "neighborhood numbers",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node_modules/.bin/gulp",
-=======
     "start": "nodemon server.js",
->>>>>>> a188a88819f3a4a477a68631748fdd0eac86e29b
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,20 +18,17 @@
     "url": "https://github.com/Neighborhood-Numbers/neighborhood-numbers/issues"
   },
   "dependencies": {
-<<<<<<< HEAD
     "react": "~0.13.3",
     "gulp": "~3.9.0",
     "browserify": "~11.0.1",
     "reactify": "~1.1.1",
     "vinyl-source-stream": "~1.1.0",
     "watchify": "~3.3.1"
-=======
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "request": "^2.55.0",
     "sequelize": "^3.5.1",
     "spotcrime": "^0.0.2",
     "pg": "^2.6.2"
->>>>>>> a188a88819f3a4a477a68631748fdd0eac86e29b
   }
 }
