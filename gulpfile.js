@@ -3,6 +3,7 @@ var source = require('vinyl-source-stream'); // Used to stream bundle for furthe
 var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify'); 
+var concat = require('gulp-concat');
  
 gulp.task('browserify', function() {
     var bundler = browserify({
@@ -18,16 +19,24 @@ gulp.task('browserify', function() {
         var updateStart = Date.now();
         console.log('Updating!');
         watcher.bundle() // Create new bundle that uses the cache for high performance
-        .pipe(source('bundle.js'))
+        .pipe(source('main.js'))
     // This is where you add uglifying etc.
         .pipe(gulp.dest('./build/'));
         console.log('Updated!', (Date.now() - updateStart) + 'ms');
     })
     .bundle() // Create the initial bundle when starting the task
-    .pipe(source('bundle.js'))
+    .pipe(source('main.js'))
     .pipe(gulp.dest('./build/'));
 });
 
+// I added this so that you see how to run two watch tasks
+gulp.task('css', function () {
+    gulp.watch('styles/**/*.css', function () {
+        return gulp.src('styles/**/*.css')
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest('build/'));
+    });
+});
 
 // Just running the two tasks
-gulp.task('default', ['browserify']);
+gulp.task('default', ['browserify', 'css']);
