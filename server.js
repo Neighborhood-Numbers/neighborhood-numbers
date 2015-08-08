@@ -84,22 +84,36 @@ app.use(bodyparser.json());
 
 
 app.get('/data', function (req, res, next) {
-	request('http://www.zillow.com/webservice/GetDemographics.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&state=WA&city=Seattle&neighborhood=Ballard', function (error, response, xml) {
-		 var zillowdata = {};
-		 var $ = cheerio.load(xml);
-		 var xmlresponse = $('response')
-  		parseString(xmlresponse, function (err, result) {
-	  	  zillowdata.state = result.response.region[0].state[0];
-	  	  zillowdata.city = result.response.region[0].city[0];
-	  	  zillowdata.neighborhood = result.response.region[0].neighborhood[0];
-	  	  var temp = result.response.pages[0].page[0].tables[0].table[0].data[0].attribute[0].values[0];
-	  	  zillowdata.valueIndexNeighborhood = temp.neighborhood[0].value[0]._;
-	  	  zillowdata.valueIndexCity = temp.city[0].value[0]._;
-	  	  zillowdata.valueIndexNation = temp.nation[0].value[0]._;
+	request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA', function (error, response, xml) {
+		var $ = cheerio.load(xml);
+		var xmlresponse = $('result');
+		parseString(xmlresponse, function (err, result) {
+			var firstget = {};
+			firstget.state = result.result.address[0].state[0];
+			firstget.city = result.result.address[0].city[0];
+			firstget.neighborhood = result.result.localrealestate[0].region[0].$.name;
+			request('http://www.zillow.com/webservice/GetDemographics.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&state='+ firstget.state + '&city=' + firstget.city + '&neighborhood=' + firstget.neighborhood, function (error, response, xml) {
+				 var zillowdata = {};
+				 var $ = cheerio.load(xml);
+				 var xmlresponse = $('response')
+		  		parseString(xmlresponse, function (err, result) {
+			  	  zillowdata.state = result.response.region[0].state[0];
+			  	  zillowdata.city = result.response.region[0].city[0];
+			  	  zillowdata.neighborhood = result.response.region[0].neighborhood[0];
+			  	  var temp = result.response.pages[0].page[0].tables[0].table[0].data[0].attribute[0].values[0];
+			  	  zillowdata.valueIndexNeighborhood = temp.neighborhood[0].value[0]._;
+			  	  zillowdata.valueIndexCity = temp.city[0].value[0]._;
+			  	  zillowdata.valueIndexNation = temp.nation[0].value[0]._;
+			  	  temp = result.response.pages[0].page[1].tables[0].table[0].data[0];
+			  	  zillowdata.ownersNeighborhood = temp.attribute[0].values[0].neighborhood[0].value[0]._;
+			  	  zillowdata.ownersIndexCity = temp.attribute[0].values[0].city[0].value[0]._;
+			  	  zillowdata.ownersIndexNation = temp.attribute[0].values[0].nation[0].value[0]._;
 
-  	res.json(zillowdata);
-		});
-	});
+		  	res.json(zillowdata);
+				});
+			});
+		})
+	})
 });
 
 
