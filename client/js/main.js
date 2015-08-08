@@ -27,3 +27,4 @@ function GMap($rootScope, $scope, uiGmapGoogleMapApi) {
   });
 
 };
+
