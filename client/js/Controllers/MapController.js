@@ -16,6 +16,7 @@ function MapController($rootScope, $http) {
     // that.address = '2114 Bigelow Ave, Seattle, WA';
     that.getURL();
     that.getPlaces();
+    that.getCrime();
   }
 
   this.placeMarker = function () {
@@ -39,13 +40,13 @@ function MapController($rootScope, $http) {
   }
 
   this.getURL = function () {
-  //split the address input by commas
-  var strArr = that.address.split(',');
-  street = strArr[0];
-  city = strArr[1].trim();
-  state = strArr[2].trim();
+    //split the address input by commas
+    var strArr = that.address.split(',');
+    street = strArr[0];
+    city = strArr[1].trim();
+    state = strArr[2].trim();
 
-  strAddress = street.split(' ');
+    strAddress = street.split(' ');
     //create string to append to url and loop through street address array to the street values
     var str = '';
     for (var i = 0; i < strAddress.length; i ++) {
@@ -118,4 +119,30 @@ function MapController($rootScope, $http) {
       }
     });  
   }
+<<<<<<< HEAD
 }
+=======
+
+  this.getCrime = function() {
+    //Get the geocode of our address
+    var GeoJson = {address: that.address};
+    
+    //Place the marker of the address on our map
+    geocoder.geocode(GeoJson, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var location = results[0].geometry.location;
+        $http.post('/address', location).success(function(data) {
+          console.log(data);
+        });
+      }
+    });
+  }
+}
+// function getPlaces(position) {
+//   var Json = {
+//     key: 'AIzaSyDvzb0OWTF0DNjkalsD7bTtqldwmNvOftE',
+//     location: position,
+//     radius: 10000,
+// }
+
+>>>>>>> 5646ccc957df9622f9887e7d4d6b03096f1d997a
