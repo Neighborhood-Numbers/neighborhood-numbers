@@ -25,7 +25,7 @@ function MapController($rootScope, $http) {
     geocoder.geocode(GeoJson, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
-        map.setZoom(13);
+        map.setZoom(14);
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location,
