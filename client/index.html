@@ -7,7 +7,7 @@
 
 <script src="../bower_components/lodash/lodash.min.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
-<script src='../bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>	<script src='./js/main.js'></script>
+<script src='./js/main.js'></script>
 <script src='./js/Controllers/MapController.js'></script>
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvzb0OWTF0DNjkalsD7bTtqldwmNvOftE">
@@ -16,9 +16,9 @@
 <body ng-app='main'>
 	<div id ="main_box">
 		<h1 id="name">Neighborhood Numbers</h1>
-		<div id="map-canvas">
-		</div>
 		<div ng-controller='MapController as MapCtrl'>
+			<div id="map-canvas">
+			</div>
 			<form ng-submit='MapCtrl.lookup()'>
 				<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address" id="address"></input>
 				<div>
