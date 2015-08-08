@@ -30,15 +30,15 @@ var Crimes = sequelize.define('lacitycrimes', {
 	time_occ: Sequelize.STRING,
 });
 
-
+app.use('/', express.static("client"));
 
  // app.use(parseString());
 app.use(bodyparser.json());
 
 
-app.get('/stuff', function (req, res, next) {
-	var inputlat = 34.02;
-	var inputlon = -118.25;
+app.post('/address', function (req, res, next) {
+	var inputlat = req.body.G;
+	var inputlon = req.body.K;
 	var lat = [inputlat - .015, inputlat + .015];
 	var lon = [inputlon - .017, inputlon + .017];
 	Crimes.findAll({
