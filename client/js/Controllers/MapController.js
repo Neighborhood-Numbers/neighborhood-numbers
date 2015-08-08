@@ -1,10 +1,12 @@
 angular.module('main')
 
-	.controller('MapController', ['$rootScope', MapController);
+	.controller('MapController', MapController);
 
-function MapController() {
+MapController.$inject = ['$rootScope'];
+
+function MapController($rootScope) {
 	$rootScope.address = this.address;
 	//this.lookup = function() {
 
 	// }
-]});
+};

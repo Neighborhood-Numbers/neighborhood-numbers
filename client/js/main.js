@@ -12,7 +12,9 @@ angular.module('main', ['uiGmapgoogle-maps'])
  });
 })
 
-.controller("map", ['$rootScope', function($scope, uiGmapGoogleMapApi) {
+.controller("GMap", GMap) 
+
+function GMap($rootScope, $scope, uiGmapGoogleMapApi) {
   
   // Define variables for our Map object
   var areaLat      = 33.9794709,
@@ -20,8 +22,8 @@ angular.module('main', ['uiGmapgoogle-maps'])
       areaZoom     = 10;
 
   uiGmapGoogleMapApi.then(function(maps) {
-    $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+    $scope.GMap     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
     $scope.options = { scrollwheel: false };
   });
 
-}]);
+};
