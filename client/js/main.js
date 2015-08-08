@@ -1,27 +1,3 @@
 "use strict";
-angular.module('main', ['uiGmapgoogle-maps'])
+angular.module('main', [])
 
-.config(function(uiGmapGoogleMapApiProvider) {
- 
- uiGmapGoogleMapApiProvider.configure({
-  key: 'AIzaSyDvzb0OWTF0DNjkalsD7bTtqldwmNvOftE',
-  v: '3.17',
-  libraries: 'weather,geometry,visualization',
-  sensor: false
- 
- });
-})
-
-.controller("map", ['$rootScope', function($scope, uiGmapGoogleMapApi) {
-  
-  // Define variables for our Map object
-  var areaLat      = 33.9794709,
-      areaLng      = -118.422549,
-      areaZoom     = 10;
-
-  uiGmapGoogleMapApi.then(function(maps) {
-    $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-    $scope.options = { scrollwheel: false };
-  });
-
-}]);
