@@ -8,6 +8,9 @@ function MapController($rootScope, $http) {
   var url = 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=';
   $rootScope.address = this.address;
   var that = this;
+  this.hospitals = [];
+  this.schools = [];
+  this.crimes = [];
   this.lookup = function() {
     that.placeMarker();
     //845 Amoroso Pl, Venice, CA
@@ -80,6 +83,7 @@ function MapController($rootScope, $http) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < 3; i++) {
               var place = results[i];
+              that.hospitals.push(place);
               var placeLoc = place.geometry.location;
               var image = {
                 url: './hospital-building.png'
@@ -97,6 +101,7 @@ function MapController($rootScope, $http) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < 3; i++) {
               var place = results[i];
+              that.schools.push(place);
               var placeLoc = place.geometry.location;
               var image = {
                 url: './school-2.png'
@@ -125,16 +130,17 @@ function MapController($rootScope, $http) {
       if (status == google.maps.GeocoderStatus.OK) {
         var location = results[0].geometry.location;
         $http.post('/address', location).success(function(data) {
-          console.log(data);
+          for (var i = 0; i < data.length; i ++) {
+            var position = new google.maps.LatLng(location_1, location_2);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: position
+            })
+          var desc = crm_cd_desc;
+          that.crimes.push(desc);
+          }
         });
       }
     });
   }
 }
-// function getPlaces(position) {
-//   var Json = {
-//     key: 'AIzaSyDvzb0OWTF0DNjkalsD7bTtqldwmNvOftE',
-//     location: position,
-//     radius: 10000,
-// }
-
