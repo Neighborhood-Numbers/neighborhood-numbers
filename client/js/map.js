@@ -6,5 +6,6 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
   geocoder = new google.maps.Geocoder();
+  service = new google.maps.places.PlacesService(map);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
