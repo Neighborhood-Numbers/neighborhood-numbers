@@ -18,10 +18,15 @@
   },
   "dependencies": {
     "body-parser": "^1.13.2",
+    "cheerio": "^0.19.0",
     "express": "^4.13.1",
+    "jquery": "^2.1.4",
+    "pg": "^2.6.2",
+    "pg hstore": "^2.3.2",
     "request": "^2.55.0",
     "sequelize": "^3.5.1",
     "spotcrime": "^0.0.2",
-    "nodemon": "~1.4.0"
+    "nodemon": "~1.4.0",
+    "xml2js": "^0.4.10"
   }
 }

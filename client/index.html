@@ -11,17 +11,20 @@
 <script src='./js/Controllers/MapController.js'></script>
 
 <body ng-app='main'>
-	<div ng-controller='MapController as MapCtrl'>
-		<form ng-submit='MapCtrl.lookup()'>
-			<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address"></input>
-			<div>
-				{{MapCtrl.address}}
-			</div>
-		</form>
+	<div id ="main_box">
+		<h1 id="name">Neighborhood Numbers</h1>
+		<div ng-controller="GMap">
+			<ui-gmap-google-map center="GMap.center" options="options" zoom="GMap.zoom"></ui-gmap-google-map>
+		</div>
+		<div ng-controller='MapController as MapCtrl'>
+			<form ng-submit='MapCtrl.lookup()'>
+				<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address" id="address"></input>
+				<div>
+					{{MapCtrl.address}}
+				</div>
+			</form>
+		</div>
 	</div>
-	<div ng-controller="GMap">
-    <ui-gmap-google-map center="GMap.center" options="options" zoom="GMap.zoom"></ui-gmap-google-map>
-  </div>
 </body>
 
 </html>
