@@ -13,7 +13,7 @@
 <body ng-app='main'>
 	<div ng-controller='MapController as MapCtrl'>
 		<form ng-submit='MapCtrl.lookup()'>
-			<input ng-model='MapCtrl.address' type='text'></input>
+			<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address"></input>
 			<div>
 				{{MapCtrl.address}}
 			</div>

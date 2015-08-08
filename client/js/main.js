@@ -23,7 +23,7 @@ function GMap($rootScope, $scope, uiGmapGoogleMapApi) {
 
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.GMap     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-    $scope.options = { scrollwheel: false };
+    $scope.options = { scrollwheel: true};
   });
 
 };

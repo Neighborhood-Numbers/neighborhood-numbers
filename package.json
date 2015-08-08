@@ -4,8 +4,7 @@
   "description": "neighborhood numbers",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/gulp",
-
+    "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +21,7 @@
     "express": "^4.13.1",
     "request": "^2.55.0",
     "sequelize": "^3.5.1",
-    "spotcrime": "^0.0.2"
+    "spotcrime": "^0.0.2",
+    "nodemon": "~1.4.0"
   }
 }
