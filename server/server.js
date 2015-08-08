@@ -64,7 +64,6 @@ app.get('/data', function (req, res, next) {
 			firstget.state = result.result.address[0].state[0];
 			firstget.city = result.result.address[0].city[0];
 			firstget.neighborhood = result.result.localrealestate[0].region[0].$.name;
-			// console.log(firstget);
 			request('http://www.zillow.com/webservice/GetDemographics.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&state='+ firstget.state + '&city=' + firstget.city + '&neighborhood=' + firstget.neighborhood, function (error, response, xml) {
 				 var zillowdata = {};
 				 var $ = cheerio.load(xml);
@@ -128,6 +127,7 @@ app.get('/data', function (req, res, next) {
 
 		  		  res.json(zillowdata);
 				// });
+
 			});
 		})
 	})
