@@ -22,10 +22,17 @@
 			</div>
 			<form ng-submit='MapCtrl.lookup()'>
 				<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address" id="address"></input>
-				<div>
-					{{MapCtrl.url}}
-				</div>
 			</form>
+			<div>
+					{{MapCtrl.url}}
+			</div>
+			</form>
+			<div ng-repeat="hospital in MapCtrl.hopsitals">
+				{{hospital}}
+			</div>
+			<div ng-repeat="school in MapCtrl.schools">
+				{{school}}
+			</div>
 		</div>
 	</div>
 </body>
