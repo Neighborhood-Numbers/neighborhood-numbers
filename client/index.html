@@ -28,10 +28,12 @@
 			</div>
 			</form>
 			<div ng-repeat="hospital in MapCtrl.hopsitals">
-				{{hospital}}
+				Name: {{hospital.name}}
+				Address: {{hospital.formatted_address}}
 			</div>
 			<div ng-repeat="school in MapCtrl.schools">
-				{{school}}
+				Name: {{school.name}}
+				Address: {{school.formatted_address}}
 			</div>
 		</div>
 	</div>
