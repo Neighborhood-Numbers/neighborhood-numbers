@@ -130,14 +130,38 @@ function MapController($rootScope, $http) {
       if (status == google.maps.GeocoderStatus.OK) {
         var location = results[0].geometry.location;
         $http.post('/address', location).success(function(data) {
+          console.log(data);
           for (var i = 0; i < data.length; i ++) {
-            var position = new google.maps.LatLng(location_1, location_2);
+            console.log(data[i].location_1);
+            var position = new google.maps.LatLng(data[i].location_2, data[i].location_1);
+            var desc = data[i].crm_cd_desc;
+            if (desc === 'identity_theft') {
+              var url = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAQQjBxqFQoTCICg08PQmscCFY06iAodEMcHJQ&url=http%3A%2F%2Fwww.google.com%2Fintl%2Fen_ALL%2Fmapfiles%2Fmarker.png&ei=U4_GVcCqAo31oASQjp-oAg&psig=AFQjCNHdYR0DmsSNt60dsV7eHWkb1aMwNw&ust=1439162501398590';
+            } else if (desc === 'theft_burglary') {
+              var url = 'http://i.stack.imgur.com/nHP5J.jpg';
+            } else if (desc === 'sexcrimes') {
+              var url = 'https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2';
+            } else if (desc === 'stolen_vehicle') {
+              var url = 'https://mapicons.mapsmarker.com/wp-content/uploads/mapicons/shape-default/color-e00707/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/pickup.png';
+            } else if (desc === 'assault_battery') {
+              var url = 'https://mapicons.mapsmarker.com/wp-content/uploads/mapicons/shape-default/color-c03638/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/shooting.png';
+            } else if (desc === 'vandalism') {
+              var url = 'https://mapicons.mapsmarker.com/wp-content/uploads/mapicons/shape-default/color-eb0303/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/art-museum-2.png';
+            } else if (desc === 'othercrimes') {
+              var url = 'https://mapicons.mapsmarker.com/wp-content/uploads/mapicons/shape-default/color-e81212/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/police2.png';
+            }
+            var image = {
+              url: url
+            }
             var marker = new google.maps.Marker({
               map: map,
-              position: position
+              position: position,
+              icon: image
             })
-          var desc = crm_cd_desc;
-          that.crimes.push(desc);
+            var obj = {
+              Crime: desc
+            }
+            that.crimes.push(obj);
           }
         });
       }

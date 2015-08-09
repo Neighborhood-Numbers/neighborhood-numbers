@@ -23,9 +23,6 @@
 			<form ng-submit='MapCtrl.lookup()'>
 				<input ng-model='MapCtrl.address' type='text' placeholder="Enter Address" id="address"></input>
 			</form>
-			<div>
-					{{MapCtrl.url}}
-			</div>
 			</form>
 			<div ng-repeat="hospital in MapCtrl.hopsitals">
 				Name: {{hospital.name}}
