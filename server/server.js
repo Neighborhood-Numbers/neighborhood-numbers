@@ -35,7 +35,6 @@ app.use('/', express.static("client"));
  // app.use(parseString());
 app.use(bodyparser.json());
 
-
 app.post('/address', function (req, res, next) {
 	var inputlat = req.body.G;
 	var inputlon = req.body.K;
@@ -53,7 +52,6 @@ app.post('/address', function (req, res, next) {
 		attributes: ['crm_cd_desc', 'location_1', 'location_2']
 	}).done(function(stuff) { res.json(stuff)})
 })
-
 
 app.get('/data', function (req, res, next) {
 	request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=845+Amoroso+Pl+&citystatezip=Venice%2C+CA', function (error, response, xml) {

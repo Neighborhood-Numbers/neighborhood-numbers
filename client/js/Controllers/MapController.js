@@ -1,4 +1,4 @@
-angular.module('main')
+angular.module('main')//FACTORIES AND SERVICES!
 
 .controller('MapController', MapController);
 
