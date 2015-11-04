@@ -12,6 +12,7 @@ sequelize = new Sequelize('cool', 'testuser', '1234', {
 	port: 5432
 })
 
+//Crime stats
 var Crimes = sequelize.define('lacitycrimes', {
 	area_num: Sequelize.STRING,
 	area_name: Sequelize.STRING,
@@ -53,6 +54,7 @@ app.post('/address', function (req, res, next) {
 	}).done(function(stuff) { res.json(stuff)})
 })
 
+//Zillow API
 app.get('/data', function (req, res, next) {
 	request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=845+Amoroso+Pl+&citystatezip=Venice%2C+CA', function (error, response, xml) {
 		var $ = cheerio.load(xml);
