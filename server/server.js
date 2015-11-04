@@ -122,7 +122,6 @@ app.get('/data', function (req, res, next) {
 			  	// 	}
 			  	//   zillowdata.medianAge.City = temp[3].values[0].city[0].value[0]._;
 			  	//   // zillowdata.medianAge.Nation = temp[3].values[0].nation[0].value[0]._;
-
 		  		  res.json(zillowdata);
 				// });
 
@@ -130,6 +129,5 @@ app.get('/data', function (req, res, next) {
 		})
 	})
 });
-
 
 app.listen(3000);
