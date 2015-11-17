@@ -1,4 +1,5 @@
-function initialize() {//MAP should be service instead of global variable. Try Angular Google Maps Api
+//MAP should be service instead of global variable. Try Angular Google Maps Api.
+function initialize() {
   var mapOptions = {
     center: { lat: 33.9794709, lng: -118.422549},
     zoom: 10
