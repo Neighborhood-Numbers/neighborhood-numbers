@@ -21,6 +21,7 @@ function MapController($rootScope, $http) {
   }
 
   this.placeMarker = function () {
+
     //Get the geocode of our address
     var GeoJson = {address: that.address};
     
@@ -41,6 +42,7 @@ function MapController($rootScope, $http) {
   }
 
   this.getURL = function () {
+
     //split the address input by commas
     var strArr = that.address.split(',');
     street = strArr[0];
@@ -48,6 +50,7 @@ function MapController($rootScope, $http) {
     state = strArr[2].trim();
 
     strAddress = street.split(' ');
+
     //create string to append to url and loop through street address array to the street values
     var str = '';
     for (var i = 0; i < strAddress.length; i ++) {
@@ -63,8 +66,10 @@ function MapController($rootScope, $http) {
 
   this.getPlaces = function() {
     var GeoJson = {address: that.address};
+    
     //Get geocode of location
     geocoder.geocode(GeoJson, function(results, status) {
+
       //if geocode returns, create the request objects
       if (status == google.maps.GeocoderStatus.OK) {
         var request1 = {
@@ -77,6 +82,7 @@ function MapController($rootScope, $http) {
           radius: 1000,
           query: 'school'
         } 
+
         //find local hospitals and put markers 
         service.textSearch(request1, function (results, status) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -95,6 +101,7 @@ function MapController($rootScope, $http) {
             }
           }
         });
+
         //find local schools and put markers
         service.textSearch(request2, function (results, status) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -121,6 +128,7 @@ function MapController($rootScope, $http) {
   }
 
   this.getCrime = function() {
+
     //Get the geocode of our address
     var GeoJson = {address: that.address};
     
