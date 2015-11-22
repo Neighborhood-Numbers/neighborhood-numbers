@@ -1,9 +1,7 @@
 angular.module('main')//FACTORIES AND SERVICES!
-
 .controller('MapController', MapController);
 
 MapController.$inject = ['$rootScope', '$http'];
-
 function MapController($rootScope, $http) {
   var url = 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=';
   $rootScope.address = this.address;
@@ -21,7 +19,6 @@ function MapController($rootScope, $http) {
   }
 
   this.placeMarker = function () {
-
     //Get the geocode of our address
     var GeoJson = {address: that.address};
     
@@ -42,7 +39,6 @@ function MapController($rootScope, $http) {
   }
 
   this.getURL = function () {
-
     //split the address input by commas
     var strArr = that.address.split(',');
     street = strArr[0];
@@ -91,7 +87,7 @@ function MapController($rootScope, $http) {
               that.hospitals.push(place);
               var placeLoc = place.geometry.location;
               var image = {
-                url: './hospital-building.png'
+                url: '../../assets/hospital-building.png'
               }
               var marker = new google.maps.Marker({
                 map: map,
@@ -110,7 +106,7 @@ function MapController($rootScope, $http) {
               that.schools.push(place);
               var placeLoc = place.geometry.location;
               var image = {
-                url: './school-2.png'
+                url: '../../assets/school-2.png'
               }
               var marker = new google.maps.Marker({
                 map: map,
@@ -128,7 +124,6 @@ function MapController($rootScope, $http) {
   }
 
   this.getCrime = function() {
-
     //Get the geocode of our address
     var GeoJson = {address: that.address};
     

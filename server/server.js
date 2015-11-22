@@ -6,6 +6,7 @@ var cheerio = require('cheerio');
 var parseString = require('xml2js').parseString;
 var bodyparser = require('body-parser');
 var Sequelize = require('sequelize');
+
 sequelize = new Sequelize('cool', 'testuser', '1234', {
 	dialect: 'postgres',
 	host: 'localhost',
