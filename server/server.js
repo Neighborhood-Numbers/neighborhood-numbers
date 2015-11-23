@@ -42,6 +42,7 @@ app.post('/address', function (req, res, next) {
 	var inputlon = req.body.K;
 	var lat = [inputlat - .015, inputlat + .015];
 	var lon = [inputlon - .017, inputlon + .017];
+	
 	Crimes.findAll({
 		where: {
 			location_1: { 
