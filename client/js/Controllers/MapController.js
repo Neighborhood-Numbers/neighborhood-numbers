@@ -3,12 +3,14 @@ angular.module('main')//FACTORIES AND SERVICES!
 
 MapController.$inject = ['$rootScope', '$http'];
 function MapController($rootScope, $http) {
-  var url = 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=';
-  $rootScope.address = this.address;
   var that = this;
+  var url = 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1a521y3ytjf_728x4&address=';
+
+  $rootScope.address = this.address;
   this.hospitals = [];
   this.schools = [];
   this.crimes = [];
+  
   this.lookup = function() {
     that.placeMarker();
     //845 Amoroso Pl, Venice, CA
